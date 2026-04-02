@@ -139,3 +139,38 @@ class C(A,B):
 
 c1=C()
 c1.pass1()
+
+
+# Polymorpsim
+#method overriding
+class Animal:
+    def sound(self):
+        print("I used to sound during night")
+
+class Dog:
+    def sound(self):
+        print("I used to Bow bow")
+
+class Cat:
+    def sound(self):
+        print("I used to sound meow meow")
+
+c1=Cat()
+d1=Dog()
+
+c1.sound()
+d1.sound()
+
+#method overloading
+
+# class Maths:
+class Maths:
+    def add1(self,a,b):
+        return a+b
+    
+    def add1(self,a,b,c=0):
+        return a+b+c
+    
+m1=Maths()
+print(m1.add1(1,2))
+print(m1.add1(4,5,6))
