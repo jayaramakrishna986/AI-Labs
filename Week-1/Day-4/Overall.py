@@ -154,7 +154,7 @@ R1.Items()
 R1.isodered()
 
 class Restaurant:
-    count=0
+    
     def __init__(self,name,location,phone):
         self.name=name
         self.location=location 
@@ -175,7 +175,7 @@ class Restaurant:
 class cart:
     def __init__(self):
         self.__items=[]
-
+    
     def add_item(self,item):
         self.__items.append(item)
 
