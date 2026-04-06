@@ -171,3 +171,6 @@ print(np.linalg.norm(B))
 
 A=np.array([[1,2,3],[4,2,2]])
 print(np.linalg.svd(A))
+
+A1=np.array([2,6])
+print(np.linalg.norm(A1,ord=np.inf))
