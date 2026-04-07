@@ -1,9 +1,6 @@
-import numpy as np
+# import numpy as np
 
 # ar1=np.array([1,3,4])
-
-
-
 # v2=[1,3,5]
 # v1=[56,8,7]
 
@@ -159,18 +156,43 @@ Aa=np.array([[1,2],
 # print(D)
 
 
-A=np.array([
-    [1,2],
-    [3,5]
-])
-print(np.linalg.matrix_rank(A))
+# A=np.array([
+#     [1,2],
+#     [3,5]
+# ])
+# print(np.linalg.matrix_rank(A))
 
-B=np.array([6,8,2])
+# B=np.array([6,8,2])
 
-print(np.linalg.norm(B))
+# print(np.linalg.norm(B))
 
-A=np.array([[1,2,3],[4,2,2]])
-print(np.linalg.svd(A))
+# A=np.array([[1,2,3],[4,2,2]])
+# print(np.linalg.svd(A))
 
-A1=np.array([2,6])
-print(np.linalg.norm(A1,ord=np.inf))
+# A1=np.array([2,6])
+# print(np.linalg.norm(A1,ord=np.inf))
+
+import numpy as np
+import statistics as sts
+
+arr=[2,2,2,3,4,5,55,1,5,1]
+# print(np.mode(arr))
+# print(sts.mode(arr))
+# print(sts.median(arr))
+
+# from functools import reduce
+# nums=[1,2,43,4]
+# res=map(lambda x:x*x ,nums)
+# print(list(res))
+
+# res1=reduce(lambda x,y:x+y,nums)
+# print(res1)
+
+nums=[15,5,4,5,45,45]
+res=map(lambda x:x*2 ,nums)
+print(list(res))
+res1=filter(lambda x:x%5==0,nums)
+print(list(res1))
+from functools import reduce
+res3=reduce(lambda x,y:x+y,nums)
+print(res3)
