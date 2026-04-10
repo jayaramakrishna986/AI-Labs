@@ -66,3 +66,5 @@ ar2=np.array([[1,2],
               [2,3]])
 
 print(np.cross(ar1,ar2))
+
+
