@@ -25,3 +25,7 @@ model.fit(X, y)
 
 # Prediction
 print(model.predict([[2.6]]))
+
+
+
+
