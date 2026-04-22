@@ -1,0 +1,42 @@
+Alembic  
+-Lightweigth database migration tool for when using SQLAlchemy
+-Migration tools allow us to plan,transfer and upgrade resources with in databases
+-Alembic allows you to change a SQLAlchemy database table after it has been created
+-Currently SQLAlchemy will only create new database tables for us ,not enhance any
+
+How does the almembic work
+-Alembic provides the creation and invocation if change management scripts
+-This allows you to be to create migration environments and be able to change data how you like
+
+
+-we already have some data in our database
+
+
+
+after initilize our project with alembic,two new items wil appear in our directory
+-alembic.ini
+-alembic directory
+The above two will created automatically by alembic so we can upgrade,downgrade and keep data integrity of our application
+
+#Alembic .ini file
+-File that alembic looks for the when invoked
+#Alembic directory
+-Has all the environmental properties for alembic
+-Holds all revisions of your application
+
+-where you can call the migration for downgrading
+
+
+#Alembic revision
+
+-alembic revision is how we create a new alembic file where we can add some type of database upgrade
+
+--alembic revision -m "create phone number col on users table"
+-creates a new file where we can write the upgrade code 
+-each new revision will have a revision id
+
+
+#Alembic upgrade
+
+def upgrade()->None:
+op.add_coulmun('users',sa.Coulumn('phone_num'))
