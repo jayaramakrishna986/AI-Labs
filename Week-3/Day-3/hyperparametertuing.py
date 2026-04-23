@@ -39,3 +39,12 @@ print(random.best_params_)
 
 # ✔️ Faster
 # ✔️ Works well in large search space
+
+random = RandomizedSearchCV(
+    model,
+    param_distributions=param_dist,
+    n_iter=5,
+    cv=5,
+    n_jobs=-1,   # use all CPU cores
+    random_state=42
+)
