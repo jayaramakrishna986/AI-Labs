@@ -1,0 +1,120 @@
+📌 What is ANN?
+Artificial Neural Networks (ANN) are a core concept in Machine Learning inspired by how the human brain works. They consist of interconnected nodes (called neurons) that process data and learn patterns.
+
+🧩 Structure of ANN
+
+An ANN typically has three main layers:
+
+1)Input Layer
+Receives raw data (e.g., pixels, numbers, features)
+2)Hidden Layer(s)
+Performs computations and extracts patterns
+Can be one or multiple layers (Deep Learning)
+3)Output Layer
+Produces the final prediction (e.g., yes/no, category)
+
+    Neuron (Node) → Basic processing unit
+    Weights → Importance of input
+    Bias → Adjusts output
+    Activation Function → Adds non-linearity
+    Loss Function → Measures error
+
+
+    Feedforward Neural Network (FNN)
+    Data flows in one direction
+    Convolutional Neural Network (CNN)
+    Used for images and computer vision
+    Recurrent Neural Network (RNN)
+    Used for sequential data (text, time series)
+    Deep Neural Networks (DNN)
+    Multiple hidden layers
+
+
+Types of Netural Networks:
+1️⃣ Feedforward Neural Network (FNN)
+Simplest type of neural network
+Data flows in one direction (input → output)
+No loops or memory
+
+👉 Used for:
+
+Basic classification and regression problems
+
+2️⃣ Convolutional Neural Network (CNN)
+Specialized for image and video processing
+Uses filters to detect features like edges, shapes
+
+👉 Used in:
+
+Face recognition
+Object detection
+Medical image analysis
+
+3️⃣ Recurrent Neural Network (RNN)
+Designed for sequential data
+Has memory (remembers previous inputs)
+
+👉 Used in:
+
+Text prediction
+Speech recognition
+Time series forecasting
+4️⃣ Long Short-Term Memory (LSTM)
+Advanced type of RNN
+Solves memory limitations of RNN
+
+👉 Used in:
+
+Language translation
+Chatbots
+5️⃣ Generative Adversarial Networks (GANs)
+Two networks:
+Generator
+Discriminator
+Used to generate new data
+
+👉 Used in:
+
+Image generation
+Deepfake videos
+
+
+6️⃣ Transformers
+Most advanced models for Natural Language Processing (NLP)
+Handle long-range dependencies efficiently
+
+👉 Used in:
+
+Systems like ChatGPT
+Translation, summarization
+
+
+7️⃣ Autoencoders
+Used for data compression and feature learning
+
+👉 Used in:
+
+Anomaly detection
+Noise reduction
+
+
+A Perceptron is the simplest type of artificial neural network and the basic building block of modern deep learning models. It was introduced by Frank Rosenblatt in 1957.
+
+👉 It works like a single artificial neuron that takes inputs, processes them, and produces an output.
+
+⚙️ How a Perceptron Works
+
+A perceptron performs three main steps:
+
+Multiply inputs with weights
+Add bias
+Apply activation function (step function)
+
+Mathematically, it computes a weighted sum and then decides the output:
+
+
+x(i)-> input values
+w(i)→ weights
+b → bias
+f → activation function (usually step function)
+y → output
