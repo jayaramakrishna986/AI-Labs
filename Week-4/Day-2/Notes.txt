@@ -1,0 +1,8 @@
+What is Gradient Descent?
+Gradient descent is a leading optimization algorithm.
+ It is the standard way to train neural networks.
+ How It WorksThis method minimizes an objective function \(J(\theta)\) using these steps:Parameters: It uses a model's parameters \(\theta \).Direction: It moves parameters opposite the gradient \(\nabla_\theta J(\theta)\).
+ Step Size: The learning rate \(\eta \) sets the jump size.
+ Result: It stops when it hits a local minimum or "valley."
+ Key Idea: You are essentially walking downhill on a mathematical slope until you reach the lowest point.
+
