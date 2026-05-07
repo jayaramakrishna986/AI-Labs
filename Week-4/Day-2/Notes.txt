@@ -6,3 +6,18 @@ Gradient descent is a leading optimization algorithm.
  Result: It stops when it hits a local minimum or "valley."
  Key Idea: You are essentially walking downhill on a mathematical slope until you reach the lowest point.
 
+
+
+How Gradient Descent Finds the Minimum
+Gradient descent is an iterative optimization algorithm that acts like a ball rolling down a U-shaped valley to find the bottom.
+1. Calculate the Gradient
+The algorithm takes the derivative (gradient) of the cost function.
+The gradient measures the slope of the curve at the current position.
+2. Determine the DirectionA positive slope means the error is increasing; the algorithm moves backward (left).
+A negative slope means the error is decreasing; the algorithm moves forward (right).
+It always moves opposite to the gradient to go downward.
+3. Take a StepThe algorithm changes the model's weights using a step size called the learning rate.Large learning rate: Huge steps; 
+might overshoot the minimum.
+Small learning rate: Tiny steps; takes too long to reach the bottom.
+4. Stop at the MinimumAt the local minimum, the slope (gradient) becomes zero.
+Once the gradient is zero, the algorithm stops updating because it has found the best possible parameters.
