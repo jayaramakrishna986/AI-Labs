@@ -1,0 +1,30 @@
+Gradient Descent is the most popular algorithm for optimization and one of the most common ways to 
+optimize neural networks. It is basically an optimization algorithm to find the optimal solution.
+ How Gradient Descent Works
+• Goal: Minimize the loss function (objective function)
+• Method: Update parameters in the opposite direction of the gradient of the objective function
+• Process: Move step by step like going downhill to get to the minimum point
+• Learning Rate: Controls the step size towards the minimum
+
+
+
+Back Propagation Process
+1. Decide number of epochs
+2. For each epoch:
+    i.Take one data point at a time 
+    ii.Calculate prediction forthat point 
+    iii.Calculate loss
+    iv.Update weights using equations
+3. Calculate average loss when epoch completes
+
+
+Understanding Through Backpropagation Algorithm
+Backpropagation Process
+According to the backpropagation algorithm:
+1. Select a data point from the dataset
+2. Calculate prediction using current weights and biases
+3. Calculate loss using the prediction
+4. Update weights using the formula
+Weight Update Formula
+W_new = W_old - learning_rate x 3L/aw
+Where: SL/aw is the derivative of loss function with respect to that particular weight.
