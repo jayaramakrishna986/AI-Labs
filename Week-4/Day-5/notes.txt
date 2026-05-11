@@ -1,0 +1,43 @@
+What is Keras?
+
+    Keras is a high-level Deep Learning API used to build and train neural networks easily.
+
+It works on top of:
+
+    TensorFlow
+
+Why Keras is Popular?
+    Easy to use
+    Less code
+    Fast development
+    Used in real-world AI projects
+
+CPU             vs          GPU
+    CPU	                        GPU
+    Slower	                    Faster
+    Few cores	                Thousands of cores
+    Good for small tasks	    Good for Deep Learning
+    Sequential processing	    Parallel processing
+
+Why GPU is Important in Deep Learning?
+
+Deep learning involves:
+
+    Large matrix operations
+    Millions of calculations
+
+GPU performs:
+
+    Parallel computation
+    Faster training
+
+
+
+import numpy as np 
+    The Math Engine: Handles the data arrays.
+    The Fix: You need this to turn your Python lists (which your model is rejecting) into NumPy arrays so the model can read them.
+from tensorflow.keras.models import Sequential
+    The Blueprint: This creates a "stack" of layers.The Flow: It ensures data flows in one direction, from the first layer to the last.
+from tensorflow.keras.layers import Dense
+    The Brain Cells: This is a "fully connected" layer.
+    The Work: It assigns weights and biases to your inputs to find patterns and make predictions.
