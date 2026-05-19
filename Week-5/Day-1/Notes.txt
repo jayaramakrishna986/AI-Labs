@@ -1,0 +1,32 @@
+LangServe
+
+Used for deploying LangChain apps as APIs.
+
+Example:
+
+LangChain App → REST API
+
+
+LangSmith
+
+    Observability and debugging platform.
+
+Used for:
+
+    Monitoring chains
+    Debugging agents
+    Tracking prompts
+    Evaluating outputs
+
+Official:
+LangSmith
+
+LangGraph
+
+Framework for:
+
+    Stateful workflows
+    Multi-agent systems
+    Human-in-the-loop systems
+
+Important for advanced agent architectures.

@@ -1,0 +1,70 @@
+Main Components of Transformers
+A. Embedding Layer
+
+Words are converted into vectors.
+
+Example:
+
+"cat" → [0.25, 0.81, 0.13]
+
+This numerical representation helps neural networks understand language.
+
+B. Positional Encoding
+
+Transformers process words in parallel.
+
+So:
+
+they need position information.
+
+Example:
+
+"I eat rice"
+
+is different from:
+
+"Rice eat I"
+
+Positional encoding tells:
+
+word order.
+C. Self-Attention
+
+This is the heart of Transformers.
+
+Self-attention helps determine:
+
+which words are important.
+Example
+
+Sentence:
+
+"The boy kicked the ball because he was angry."
+
+Transformer learns:
+
+"he" refers to "boy"
+
+using attention.
+
+6. What is Attention Mechanism?
+
+Attention allows model to:
+
+focus on relevant words.
+Human Analogy
+
+When reading:
+
+humans focus on important words.
+
+Transformers do the same.
+
+Attention Visualization
+Input Sentence
+      ↓
+Check relationship between all words
+      ↓
+Assign importance scores
+      ↓
+Generate contextual understanding
