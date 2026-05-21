@@ -3,7 +3,7 @@ from langchain_ollama import ChatOllama
 llm = ChatOllama(model="phi3:mini")
 
 response = llm.invoke(
-    "Explain machine learning"
+    "give me 5 names of the universities in india?"
 )
 
 print(response.content)
