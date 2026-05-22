@@ -14,6 +14,7 @@ class Review(TypedDict):
     pros: Annotated[Optional[list[str]], "Write down all the pros inside a list"]
     cons: Annotated[Optional[list[str]], "Write down all the cons inside a list"]
     name: Annotated[Optional[str], "Write the name of the reviewer"]
+    phone:Annotated[Optional[str],"Write the Phone Name."]
     
 
 structured_model = model.with_structured_output(Review)
@@ -33,4 +34,4 @@ S-Pen support is unique and useful
 Review by Pradeep Kumar
 """)
 
-print(result['name'])
+print(result['phone'])
