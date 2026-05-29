@@ -1,0 +1,10 @@
+from langchain_core.chat_history import (
+
+    InMemoryChatMessageHistory
+)
+
+
+chat_memory = (
+
+    InMemoryChatMessageHistory()
+)

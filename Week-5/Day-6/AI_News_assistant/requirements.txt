@@ -1,0 +1,9 @@
+requests
+python-dotenv
+pydantic
+streamlit
+langchain
+
+chromadb
+langchain-chroma
+sentence-transformers
