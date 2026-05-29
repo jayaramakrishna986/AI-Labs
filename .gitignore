@@ -6,3 +6,12 @@ __pycache__/
 
 .langchain_retrievers.ipynb
 
+.venv
+.langchain_env
+.fastapi
+
+git push
+git push
+  # url = f'https://api.weatherstack.com/current?access_key=4d1d8ae207a8c845a52df8a67bf3623e&query={city}'
+
+  agent_in_langchain.ipynb
