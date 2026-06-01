@@ -1,60 +1,71 @@
 import os
+from datetime import datetime, timedelta, timezone
 
 import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 
-NEWS_API_KEY = (
-    os.getenv("NEWSAPI_ORG_API_KEY")
-    or os.getenv("NEWSAPI_KEY")
-    or os.getenv("NEWS_API_KEY")
-)
-NEWS_API_URL = "https://newsapi.org/v2/everything"
+NEWSDATA_API_KEY = os.getenv("NEWSDATA_API_KEY")
+NEWSDATA_API_URL = "https://newsdata.io/api/1/latest"
+RECENT_NEWS_DAYS = int(os.getenv("RECENT_NEWS_DAYS", "7"))
 
 
-def _normalize_newsapi_article(article: dict) -> dict:
-    source = article.get("source") or {}
+def _parse_news_date(value: str) -> datetime | None:
+    if not value:
+        return None
 
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            return parsed.replace(tzinfo=timezone.utc)
+        return parsed
+    except ValueError:
+        return None
+
+
+def _normalize_newsdata_article(article: dict) -> dict:
     return {
         "title": article.get("title") or "No Title",
         "description": article.get("description") or article.get("content") or "",
-        "link": article.get("url") or "",
-        "source_name": source.get("name") or "",
-        "pubDate": article.get("publishedAt") or "",
+        "link": article.get("link") or "",
+        "source_name": article.get("source_name") or article.get("source_id") or "",
+        "pubDate": article.get("pubDate") or "",
     }
 
 
-def get_news(state=None, topic="technology"):
-    if not NEWS_API_KEY:
-        raise RuntimeError(
-            "NewsAPI.org API key is missing. Add NEWSAPI_ORG_API_KEY to your .env file."
-        )
+def _newsdata_error_message(data: dict, fallback: str) -> str:
+    results = data.get("results")
+    if isinstance(results, dict):
+        return results.get("message") or data.get("message") or fallback
+    return data.get("message") or fallback
 
-    if NEWS_API_KEY.startswith("pub_"):
+
+def get_news(state=None, topic="technology", max_age_days: int = RECENT_NEWS_DAYS):
+    if not NEWSDATA_API_KEY:
         raise RuntimeError(
-            "The configured NEWS_API_KEY looks like a NewsData.io key. "
-            "NewsAPI.org needs a key from https://newsapi.org. "
-            "Add it as NEWSAPI_ORG_API_KEY in your .env file."
+            "NewsData.io API key is missing. Add NEWSDATA_API_KEY to your .env file."
         )
 
     query_parts = [topic.strip()]
     if state:
         query_parts.append(state.strip())
-    query_parts.append("India")
+
+    earliest_date = datetime.now(timezone.utc) - timedelta(days=max_age_days)
 
     params = {
+        "apikey": NEWSDATA_API_KEY,
         "q": " ".join(part for part in query_parts if part),
         "language": "en",
-        "sortBy": "publishedAt",
-        "pageSize": 10,
+        "country": "in",
+        "size": 10,
     }
-    headers = {"X-Api-Key": NEWS_API_KEY}
 
-    response = requests.get(
-        NEWS_API_URL,
+    session = requests.Session()
+    session.trust_env = False
+    response = session.get(
+        NEWSDATA_API_URL,
         params=params,
-        headers=headers,
         timeout=30,
     )
 
@@ -62,21 +73,26 @@ def get_news(state=None, topic="technology"):
         data = response.json()
     except ValueError:
         response.raise_for_status()
-        raise RuntimeError("News API returned a non-JSON response.")
+        raise RuntimeError("NewsData API returned a non-JSON response.")
 
     if response.status_code != 200:
-        message = data.get("message") or response.reason or "News API request failed."
-        raise RuntimeError(f"News API request failed: {message}")
+        message = _newsdata_error_message(data, response.reason)
+        raise RuntimeError(f"NewsData API request failed: {message}")
 
-    if data.get("status") != "ok":
-        message = data.get("message", "News API request failed.")
+    if data.get("status") != "success":
+        message = _newsdata_error_message(data, "NewsData API request failed.")
         raise RuntimeError(message)
+
+    recent_articles = []
+    for article in data.get("results", []):
+        normalized = _normalize_newsdata_article(article)
+        published_at = _parse_news_date(normalized.get("pubDate", ""))
+        if published_at and published_at < earliest_date:
+            continue
+        recent_articles.append(normalized)
 
     return {
         "status": "success",
         "query": params["q"],
-        "results": [
-            _normalize_newsapi_article(article)
-            for article in data.get("articles", [])
-        ],
+        "results": recent_articles,
     }

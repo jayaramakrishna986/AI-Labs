@@ -7,12 +7,13 @@ Usage:
 """
 
 import argparse
+import sys
 from news_api import get_news
 from models import NewsRequest
 from chains import news_chain
-from news_ingestion import ingest_news
-from qa_chain import ask_news_question
-from conversational_chain import conversational_rag
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 
 def browse_mode():
@@ -62,6 +63,9 @@ def browse_mode():
 
 
 def qa_mode():
+    from news_ingestion import ingest_news
+    from qa_chain import ask_news_question
+
     print("\n====== AI News Assistant — QA Mode ======\n")
     state = input("State (or Enter to skip): ").strip() or None
     topic = input("Topic: ").strip()
@@ -78,6 +82,9 @@ def qa_mode():
 
 
 def chat_mode():
+    from conversational_chain import conversational_rag
+    from news_ingestion import ingest_news
+
     print("\n====== AI News Assistant — Chat Mode ======\n")
     state = input("State (or Enter to skip): ").strip() or None
     topic = input("Topic: ").strip()

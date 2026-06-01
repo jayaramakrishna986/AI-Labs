@@ -7,9 +7,6 @@ import streamlit as st
 from news_api import get_news
 from chains import news_chain
 from models import NewsRequest
-from news_ingestion import ingest_news
-from qa_chain import ask_news_question
-from conversational_chain import conversational_rag, get_chat_history, clear_chat_history
 
 
 # ── Page Config ─────────────────────────────────────────────────────────
@@ -63,6 +60,8 @@ with st.sidebar:
 
     st.divider()
     if st.button("🗑️ Clear Chat History", use_container_width=True):
+        from conversational_chain import clear_chat_history
+
         clear_chat_history()
         st.success("Chat history cleared.")
 
@@ -109,6 +108,8 @@ if ingest_clicked:
     else:
         with st.spinner("Ingesting articles into vector store…"):
             try:
+                from news_ingestion import ingest_news
+
                 info = ingest_news(
                     state=state_input if state_input else None,
                     topic=topic_input,
@@ -297,6 +298,8 @@ with tab3:
             else:
                 with st.spinner("Searching news and generating answer…"):
                     try:
+                        from qa_chain import ask_news_question
+
                         answer = ask_news_question(question)
                         st.markdown("### 💡 Answer")
                         st.write(answer)
@@ -321,6 +324,8 @@ with tab4:
         )
     else:
         # Display conversation history
+        from conversational_chain import get_chat_history
+
         history = get_chat_history()
         if not history:
             st.info("Start a conversation by asking about the news below.")
@@ -337,6 +342,8 @@ with tab4:
             with st.chat_message("assistant"):
                 with st.spinner("Thinking…"):
                     try:
+                        from conversational_chain import conversational_rag
+
                         response = conversational_rag(user_input)
                         st.write(response)
                     except Exception as e:
