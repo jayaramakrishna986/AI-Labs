@@ -2,5 +2,5 @@
     "workbench.preferredLightColorTheme": "Solarized Light",
     "workbench.preferredHighContrastLightColorTheme": "Solarized Light",
     "python-envs.defaultEnvManager": "ms-python.python:system",
-    "workbench.remoteIndicator.showExtensionRecommendations": true
+    "workbench.remoteIndicator.showExtensionRecommendations": false
 }
